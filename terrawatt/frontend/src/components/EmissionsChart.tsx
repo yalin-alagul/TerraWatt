@@ -8,7 +8,7 @@ interface EmissionsChartProps {
 
 export default function EmissionsChart({ data }: EmissionsChartProps) {
   return (
-    <div className="w-full h-[400px] bg-slate-900 border border-slate-800 rounded-lg p-4">
+    <div className="w-full h-[400px] bg-slate-900 border border-slate-800 rounded-xl p-4">
       <h3 className="text-lg font-semibold mb-4 text-center">Emissions Trend</h3>
       <ResponsiveContainer width="100%" height="100%">
         <LineChart data={data}>

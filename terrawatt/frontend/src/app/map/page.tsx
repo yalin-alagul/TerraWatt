@@ -1,10 +1,13 @@
 import TimeSliderMap from '@/components/TimeSliderMap';
+import PageHeader from '@/components/PageHeader';
 
 export default function MapPage() {
   return (
     <div className="space-y-6">
-      <h1 className="text-3xl font-bold">Global Renewable Energy Trends</h1>
-      <p className="text-slate-400">Drag the slider to visualize the growth of renewable energy over the last 25 years.</p>
+      <PageHeader
+        title="Global Renewable Energy Map"
+        description="Drag the slider to visualize the growth of renewable energy over the last 25 years. Click any country to explore its energy profile."
+      />
       <TimeSliderMap />
     </div>
   );

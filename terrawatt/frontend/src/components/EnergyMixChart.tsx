@@ -19,7 +19,7 @@ const COLORS = {
 
 export default function EnergyMixChart({ data }: EnergyMixChartProps) {
   return (
-    <div className="w-full h-[400px] bg-slate-900 border border-slate-800 rounded-lg p-4">
+    <div className="w-full h-[400px] bg-slate-900 border border-slate-800 rounded-xl p-4">
       <h3 className="text-lg font-semibold mb-4 text-center">Energy Mix (2000-2024)</h3>
       <ResponsiveContainer width="100%" height="100%">
         <AreaChart
