@@ -19,6 +19,7 @@ const COUNTRIES = [
     { code: "CHN", name: "China" },
     { code: "DEU", name: "Germany" },
     { code: "FRA", name: "France" },
+    { code: "TUR", name: "Turkey" },
     { code: "ISL", name: "Iceland" },
 ];
 

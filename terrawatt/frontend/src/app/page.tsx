@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import CountryCard from '@/components/CountryCard';
+import EmissionsLeaderboard from '@/components/EmissionsLeaderboard';
 import { CountryProfile } from '@/types';
 
 const countries: CountryProfile[] = [
@@ -152,6 +153,13 @@ export default function Home() {
             <StatCard number="6" label="Deep-Dive Profiles" />
             <StatCard number="8" label="Energy Sources Analyzed" />
           </div>
+        </div>
+      </section>
+
+      {/* EMISSIONS LEADERBOARD */}
+      <section className="py-16 border-t border-slate-800/50">
+        <div className="max-w-4xl mx-auto">
+          <EmissionsLeaderboard year={2024} />
         </div>
       </section>
 

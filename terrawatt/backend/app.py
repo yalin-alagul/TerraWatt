@@ -12,4 +12,4 @@ app.register_blueprint(emissions_bp, url_prefix="/api")
 app.register_blueprint(simulator_bp, url_prefix="/api")
 
 if __name__ == "__main__":
-    app.run(debug=False, port=5001, host='0.0.0.0')
+    app.run(debug=False, port=5001, host='0.0.0.0', threaded=True)

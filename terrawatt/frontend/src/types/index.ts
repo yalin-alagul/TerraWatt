@@ -11,6 +11,9 @@ export interface EnergyMix {
   solar_pct: number;
   other_renewables_pct: number;
   total_generation_twh: number;
+  battery_storage_mwh?: number;
+  pumped_hydro_mwh?: number;
+  region?: string;
 }
 
 export interface Emissions {

@@ -1,5 +1,5 @@
 from flask import Blueprint, request, jsonify
-from utils.data_loader import get_country_data, get_all_countries_for_year, get_renewable_pct
+from utils.data_loader import get_country_data, get_all_countries_for_year, get_renewable_pct, get_leaderboards, get_regional_aggregates, predict_trends
 
 energy_bp = Blueprint('energy', __name__)
 
@@ -31,4 +31,24 @@ def get_renewable_percentage():
         return jsonify({"error": "year is required"}), 400
         
     data = get_renewable_pct(year)
+    return jsonify(data)
+
+@energy_bp.route('/energy/leaderboard', methods=['GET'])
+def get_leaderboard():
+    year = request.args.get('year', 2024)
+    data = get_leaderboards(year)
+    return jsonify(data)
+
+@energy_bp.route('/energy/regional', methods=['GET'])
+def get_regional():
+    year = request.args.get('year', 2024)
+    data = get_regional_aggregates(year)
+    return jsonify(data)
+
+@energy_bp.route('/energy/predict', methods=['GET'])
+def get_prediction():
+    country_code = request.args.get('country_code')
+    if not country_code:
+        return jsonify({"error": "country_code is required"}), 400
+    data = predict_trends(country_code)
     return jsonify(data)
