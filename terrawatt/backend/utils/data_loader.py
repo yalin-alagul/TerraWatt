@@ -137,3 +137,9 @@ def get_emissions_comparison(year):
     load_data()
     mask = _df_emissions['year'] == int(year)
     return _df_emissions[mask].to_dict(orient='records')
+
+def to_csv(data):
+    if not data:
+        return ""
+    df = pd.DataFrame(data)
+    return df.to_csv(index=False)
