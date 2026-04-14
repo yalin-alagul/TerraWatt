@@ -111,23 +111,31 @@ export default function Navbar() {
           <Link href="/compare" className={linkClass('/compare')}>Compare</Link>
           <Link href="/simulator" className={linkClass('/simulator')}>Simulator</Link>
           <Link href="/about" className={linkClass('/about')}>About</Link>
-          <div className="group relative">
+          <div 
+            className="relative"
+            onMouseEnter={() => setCountriesOpen(true)}
+            onMouseLeave={() => setCountriesOpen(false)}
+          >
             <button className={`transition-colors flex items-center gap-1 ${pathname.startsWith('/country') ? 'text-green-400 font-semibold' : 'text-slate-300 hover:text-white'}`}>
               Countries
               <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
               </svg>
             </button>
-            <div className="absolute right-0 mt-2 w-48 bg-slate-800 border border-slate-700 rounded-lg shadow-xl py-2 hidden group-hover:block z-50">
-              {COUNTRIES.map(c => (
-                <Link key={c.code} href={`/country/${c.code}`}
-                      className={`block px-4 py-2 text-sm hover:bg-slate-700 transition-colors ${
-                        pathname === `/country/${c.code}` ? 'text-green-400 bg-slate-700/50' : 'text-slate-300'
-                      }`}>
-                  {c.flag} {c.name}
-                </Link>
-              ))}
-            </div>
+            {countriesOpen && (
+              <div className="absolute right-0 w-48 pt-2 z-50">
+                <div className="bg-slate-800 border border-slate-700 rounded-lg shadow-xl py-2">
+                  {COUNTRIES.map(c => (
+                    <Link key={c.code} href={`/country/${c.code}`}
+                          className={`block px-4 py-2 text-sm hover:bg-slate-700 transition-colors ${
+                            pathname === `/country/${c.code}` ? 'text-green-400 bg-slate-700/50' : 'text-slate-300'
+                          }`}>
+                      {c.flag} {c.name}
+                    </Link>
+                  ))}
+                </div>
+              </div>
+            )}
           </div>
         </div>
 
