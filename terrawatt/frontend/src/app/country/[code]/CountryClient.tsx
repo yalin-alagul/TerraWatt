@@ -3,6 +3,7 @@
 import { useEffect, useState } from 'react';
 import { useParams } from 'next/navigation';
 import { fetchEnergyMix, fetchEmissions, fetchPredictions } from '@/lib/api';
+import { CODE_TO_NAME } from '@/lib/countries';
 import { EnergyMix, Emissions } from '@/types';
 import EnergyMixChart from '@/components/EnergyMixChart';
 import EmissionsChart from '@/components/EmissionsChart';
@@ -94,7 +95,7 @@ export default function CountryClient() {
   const [loading, setLoading] = useState(true);
 
   const profile = COUNTRIES_DATA[code] || {
-    name: code,
+    name: CODE_TO_NAME[code] ?? code,
     archetype: "Energy Profile",
     flag: "\u{1F310}",
     description: `Analysis of the energy transition and environmental impact for ${code}.`,

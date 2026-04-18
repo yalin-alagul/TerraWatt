@@ -2,6 +2,7 @@
 import { useState, useEffect, useRef } from 'react';
 import Link from 'next/link';
 import { usePathname, useRouter } from 'next/navigation';
+import { CODE_TO_NAME } from '@/lib/countries';
 
 const COUNTRIES = [
   { code: "FRA", name: "France", flag: "\u{1F1EB}\u{1F1F7}" },
@@ -12,26 +13,9 @@ const COUNTRIES = [
   { code: "ISL", name: "Iceland", flag: "\u{1F1EE}\u{1F1F8}" },
 ];
 
-// Simple mapping for search (can be expanded)
-const SEARCH_DATA = [
-    { code: "AFG", name: "Afghanistan" }, { code: "ALB", name: "Albania" }, { code: "DZA", name: "Algeria" },
-    { code: "ARG", name: "Argentina" }, { code: "AUS", name: "Australia" }, { code: "AUT", name: "Austria" },
-    { code: "BGD", name: "Bangladesh" }, { code: "BEL", name: "Belgium" }, { code: "BRA", name: "Brazil" },
-    { code: "CAN", name: "Canada" }, { code: "CHL", name: "Chile" }, { code: "CHN", name: "China" },
-    { code: "COL", name: "Colombia" }, { code: "DNK", name: "Denmark" }, { code: "EGY", name: "Egypt" },
-    { code: "FIN", name: "Finland" }, { code: "FRA", name: "France" }, { code: "GEO", name: "Georgia" },
-    { code: "DEU", name: "Germany" }, { code: "GRC", name: "Greece" }, { code: "IND", name: "India" },
-    { code: "IDN", name: "Indonesia" }, { code: "IRN", name: "Iran" }, { code: "IRL", name: "Ireland" },
-    { code: "ISR", name: "Israel" }, { code: "ITA", name: "Italy" }, { code: "JPN", name: "Japan" },
-    { code: "KAZ", name: "Kazakhstan" }, { code: "MEX", name: "Mexico" }, { code: "NLD", name: "Netherlands" },
-    { code: "NZL", name: "New Zealand" }, { code: "NOR", name: "Norway" }, { code: "PAK", name: "Pakistan" },
-    { code: "PHL", name: "Philippines" }, { code: "POL", name: "Poland" }, { code: "PRT", name: "Portugal" },
-    { code: "RUS", name: "Russia" }, { code: "SAU", name: "Saudi Arabia" }, { code: "ZAF", name: "South Africa" },
-    { code: "KOR", name: "South Korea" }, { code: "ESP", name: "Spain" }, { code: "SWE", name: "Sweden" },
-    { code: "CHE", name: "Switzerland" }, { code: "THA", name: "Thailand" }, { code: "TUR", name: "Turkey" },
-    { code: "UKR", name: "Ukraine" }, { code: "ARE", name: "United Arab Emirates" }, { code: "GBR", name: "United Kingdom" },
-    { code: "USA", name: "United States" }, { code: "VNM", name: "Vietnam" }
-];
+const SEARCH_DATA = Object.entries(CODE_TO_NAME)
+  .map(([code, name]) => ({ code, name }))
+  .sort((a, b) => a.name.localeCompare(b.name));
 
 export default function Navbar() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
